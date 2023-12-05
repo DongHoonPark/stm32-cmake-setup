@@ -6,7 +6,7 @@ This script is for windows user who want to use cmake environment but afraid of 
 
 Run on powershell (administrator mode)
 ```
-.\setup.ps1
+.\stm32-cmake-setup.ps1
 ```
 
 ## Setup components
@@ -27,9 +27,9 @@ But, if you use openocd, you can skip it.
 It searches toolchain and connect its path to user environment variable. Default search path is default installation path ```C:\ST\STM32CubeIDE_version```. If you install STM32CubeIDE on different path, you can modify search path manually. 
 ```
 Directory 'C:\ST' does not exist. Do you want to skip to map CubeIDE toolchains? (Y/N): N
-Enter an alternative directory path:: C:\STx
-Using alternative directory: 'C:\STx'
-File 'STM32_Programmer_CLI.exe' found in directory: C:\STx\STM32CubeIDE_1.12.
+Enter an alternative directory path:: C:\MY_AWESOME_PATH
+Using alternative directory: 'C:\MY_AWESOME_PATH'
+File 'STM32_Programmer_CLI.exe' found in directory: C:\MY_AWESOME_PATH\STM32CubeIDE_1.12.
 ...
 ```
 
@@ -39,6 +39,7 @@ Using compiler bundled in STM32CubeIDE is not good idea due to it's long path na
 
 ## Ready to run?
 
-Now you can run stm32 cmake projects. I recommend to use vscode. Sample projects are ready.
+Now you can run stm32 cmake projects. I recommend to use vscode. Sample projects are here.
 
-
+- [STM32-CMake-Template](https://github.com/jasonyang-ee/STM32-CMAKE-TEMPLATE)
+- [STM32F401 BlackPill](https://github.com/DongHoonPark/blackpill-stm32-cmake/)
