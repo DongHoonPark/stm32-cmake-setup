@@ -56,15 +56,20 @@ function Add-ToPath {
 
 function Test-CommandExists {
     param (
-        [string]$CommandName
+        [string]$CommandName,
+        [bool]$Verbose=$true
     )
 
     # Check if the command exists
     if (Get-Command -Name $CommandName -ErrorAction SilentlyContinue) {
-        Write-Host "The command '$CommandName' exists."
+        if($Verbose){
+            Write-Host "The command '$CommandName' exists."
+        }
         return $true
     } else {
-        Write-Host "The command '$CommandName' does not exist."
+        if($Verbose){
+            Write-Host "The command '$CommandName' does not exist."
+        }
         return $false
     }
 }
@@ -305,4 +310,18 @@ if($null -eq $stToolPath){
     }
 }
 
+$Env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")  
 
+Write-Host ""
+Write-Host "Installed toolchains"
+
+foreach($command in @("cmake", "ninja", "openocd", "arm-none-eabi-gcc", "STM32_Programmer_CLI", "ST-LINK_gdbserver")){
+    if(Test-CommandExists -CommandName $command -Verbose $false){
+        Write-Host "[V] $command"
+    } else{
+        Write-Host "[ ] $command"
+    }
+}
+
+Write-Host ""
+Read-Host -Prompt "Press Enter to exit"
